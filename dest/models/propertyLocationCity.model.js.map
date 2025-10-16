@@ -1,0 +1,1 @@
+{"version":3,"file":"propertyLocationCity.model.js","sourceRoot":"","sources":["../../models/propertyLocationCity.model.ts"],"names":[],"mappings":";;;;;;AAAA,wDAAgC;AAEnB,QAAA,0BAA0B,GAAG,IAAI,kBAAQ,CAAC,MAAM,CACzD;IACI,IAAI,EAAE;QACF,IAAI,EAAE,MAAM;QACZ,QAAQ,EAAE,IAAI;QACd,MAAM,EAAE,IAAI;KACf;CACJ,EACD,EAAE,UAAU,EAAE,IAAI,EAAE,CACvB,CAAC"}

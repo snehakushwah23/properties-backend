@@ -1,0 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.bankRouter = void 0;
+const express_1 = require("express");
+const token_middleware_1 = require("../middlewares/token.middleware");
+const multer_middleware_1 = require("../middlewares/multer.middleware");
+const bank_create_controller_1 = require("../controllers/bank/bank.create.controller");
+const bank_delete_controller_1 = require("../controllers/bank/bank.delete.controller");
+const bank_get_controller_1 = require("../controllers/bank/bank.get.controller");
+const bank_update_controller_1 = require("../controllers/bank/bank.update.controller");
+const bank_update_logo_controller_1 = require("../controllers/bank/bank.update.logo.controller");
+const bank_get_list_controller_1 = require("../controllers/bank/bank.get.list.controller");
+const bank_search_name_controller_1 = require("../controllers/bank/bank.search.name.controller");
+const bank_update_activeStatus_controller_1 = require("../controllers/bank/bank.update.activeStatus.controller");
+const bank_update_bannerImage_controller_1 = require("../controllers/bank/bank.update.bannerImage.controller");
+exports.bankRouter = (0, express_1.Router)({ caseSensitive: true, strict: true });
+exports.bankRouter.post('/create', token_middleware_1.getAccessTokenInfo, bank_create_controller_1.bankCreateController);
+exports.bankRouter.delete('/delete', token_middleware_1.getAccessTokenInfo, bank_delete_controller_1.bankDeleteController);
+exports.bankRouter.get('/get', bank_get_controller_1.bankGetController);
+exports.bankRouter.get('/get/list', bank_get_list_controller_1.bankGetListController);
+exports.bankRouter.patch('/update', token_middleware_1.getAccessTokenInfo, bank_update_controller_1.bankUpdateController);
+exports.bankRouter.patch('/update/logo', token_middleware_1.getAccessTokenInfo, multer_middleware_1.Multer.single('logo'), bank_update_logo_controller_1.bankUpdateLogoController);
+exports.bankRouter.get("/search/name", bank_search_name_controller_1.bankSearchByNameController);
+exports.bankRouter.patch("/update/activeStatus", token_middleware_1.getAccessTokenInfo, bank_update_activeStatus_controller_1.bankUpdateActiveStatusController);
+exports.bankRouter.patch("/update/bannerImage", token_middleware_1.getAccessTokenInfo, multer_middleware_1.Multer.single("bankBannerImage"), bank_update_bannerImage_controller_1.bankUpdateBannerImageController);
+//# sourceMappingURL=bank.routes.js.map

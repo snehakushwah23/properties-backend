@@ -1,0 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.homepageRouter = void 0;
+const express_1 = require("express");
+const token_middleware_1 = require("../middlewares/token.middleware");
+const homepage_getBuilderAndDeveloperList_controller_1 = require("../controllers/homepage/homepage.getBuilderAndDeveloperList.controller");
+const homepage_getHighlightPropertyList_controller_1 = require("../controllers/homepage/homepage.getHighlightPropertyList.controller");
+const homepage_getSliderImages_controller_1 = require("../controllers/homepage/homepage.getSliderImages.controller");
+const homepage_getInfo_controller_1 = require("../controllers/homepage/homepage.getInfo.controller");
+const homepage_create_phoneNumberAndLinks_controller_1 = require("../controllers/homepage/homepage.create.phoneNumberAndLinks.controller");
+const homepage_create_qrCode_controller_1 = require("../controllers/homepage/homepage.create.qrCode.controller");
+const homepage_create_websiteLogo_controller_1 = require("../controllers/homepage/homepage.create.websiteLogo.controller");
+const homepage_create_footerImage_controller_1 = require("../controllers/homepage/homepage.create.footerImage.controller");
+const homepage_update_footerAndQrCodeStatus_controller_1 = require("../controllers/homepage/homepage.update.footerAndQrCodeStatus.controller");
+const multer_middleware_1 = require("../middlewares/multer.middleware");
+exports.homepageRouter = (0, express_1.Router)({ caseSensitive: true, strict: true });
+exports.homepageRouter.get("/getBuilderAndDeveloperList", homepage_getBuilderAndDeveloperList_controller_1.getBuilderAndDeveloperListController);
+exports.homepageRouter.get("/getHighlightPropertyList", homepage_getHighlightPropertyList_controller_1.getHighlightPropertyListController);
+exports.homepageRouter.get("/getSliderImages", homepage_getSliderImages_controller_1.getSliderImagesController);
+exports.homepageRouter.get("/getInfo", homepage_getInfo_controller_1.getHomepageInfoController);
+exports.homepageRouter.post("/create/phoneNumberAndLinks", token_middleware_1.getAccessTokenInfo, homepage_create_phoneNumberAndLinks_controller_1.createPhoneNumberAndLinksController);
+exports.homepageRouter.post("/create/qrCode", token_middleware_1.getAccessTokenInfo, multer_middleware_1.Multer.single('qrCode'), homepage_create_qrCode_controller_1.createQrCodeController);
+exports.homepageRouter.post("/create/websiteLogo", token_middleware_1.getAccessTokenInfo, multer_middleware_1.Multer.single('websiteLogo'), homepage_create_websiteLogo_controller_1.createWebsiteLogoController);
+exports.homepageRouter.post("/create/footerImage", token_middleware_1.getAccessTokenInfo, multer_middleware_1.Multer.single('footerImage'), homepage_create_footerImage_controller_1.createFooterImageController);
+exports.homepageRouter.put("/update/footerAndQrCodeStatus", token_middleware_1.getAccessTokenInfo, homepage_update_footerAndQrCodeStatus_controller_1.updateFooterAndQrCodeStatusController);
+//# sourceMappingURL=homepage.routes.js.map

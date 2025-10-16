@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.dashboardRouter = void 0;
+const express_1 = require("express");
+const dashboard_get_adminCount_controller_1 = require("../controllers/dashboard/dashboard.get.adminCount.controller");
+const dashboard_get_subAdminCount_controller_1 = require("../controllers/dashboard/dashboard.get.subAdminCount.controller");
+const dashboard_get_builderCount_controller_1 = require("../controllers/dashboard/dashboard.get.builderCount.controller");
+const dashboard_get_bankCount_controller_1 = require("../controllers/dashboard/dashboard.get.bankCount.controller");
+const dashboard_get_customerCount_controller_1 = require("../controllers/dashboard/dashboard.get.customerCount.controller");
+const dashboard_get_propertyCount_controller_1 = require("../controllers/dashboard/dashboard.get.propertyCount.controller");
+const dashboard_get_newsCount_controller_1 = require("../controllers/dashboard/dashboard.get.newsCount.controller");
+exports.dashboardRouter = (0, express_1.Router)({ caseSensitive: true, strict: true });
+exports.dashboardRouter.get("/get/adminCount", dashboard_get_adminCount_controller_1.getAdminCountController);
+exports.dashboardRouter.get("/get/subAdminCount", dashboard_get_subAdminCount_controller_1.getSubAdminCountController);
+exports.dashboardRouter.get("/get/builderCount", dashboard_get_builderCount_controller_1.getBuilderCountController);
+exports.dashboardRouter.get("/get/bankCount", dashboard_get_bankCount_controller_1.getBankCountController);
+exports.dashboardRouter.get("/get/customerCount", dashboard_get_customerCount_controller_1.getCustomerCountController);
+exports.dashboardRouter.get("/get/propertyCount", dashboard_get_propertyCount_controller_1.getPropertyCountController);
+exports.dashboardRouter.get("/get/newsCount", dashboard_get_newsCount_controller_1.getNewsCountController);
+//# sourceMappingURL=dashboard.routes.js.map

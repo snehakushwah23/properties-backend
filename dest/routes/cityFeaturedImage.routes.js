@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.cityFeaturedImageRouter = void 0;
+const express_1 = require("express");
+const token_middleware_1 = require("../middlewares/token.middleware");
+const cityFeaturedImage_create_controller_1 = require("../controllers/cityFeaturedImage/cityFeaturedImage.create.controller");
+const cityFeaturedImage_delete_controller_1 = require("../controllers/cityFeaturedImage/cityFeaturedImage.delete.controller");
+const cityFeaturedImage_get_controller_1 = require("../controllers/cityFeaturedImage/cityFeaturedImage.get.controller");
+const cityFeaturedImage_getList_controller_1 = require("../controllers/cityFeaturedImage/cityFeaturedImage.getList.controller");
+const cityFeaturedImage_getCount_controller_1 = require("../controllers/cityFeaturedImage/cityFeaturedImage.getCount.controller");
+const cityFeaturedImage_update_controller_1 = require("../controllers/cityFeaturedImage/cityFeaturedImage.update.controller");
+const multer_middleware_1 = require("../middlewares/multer.middleware");
+exports.cityFeaturedImageRouter = (0, express_1.Router)({ caseSensitive: true, strict: true });
+exports.cityFeaturedImageRouter.post('/create', token_middleware_1.getAccessTokenInfo, multer_middleware_1.Multer.single('image'), cityFeaturedImage_create_controller_1.createCityFeaturedImageController);
+exports.cityFeaturedImageRouter.delete('/delete', token_middleware_1.getAccessTokenInfo, cityFeaturedImage_delete_controller_1.deleteCityFeaturedImageController);
+exports.cityFeaturedImageRouter.get('/get', cityFeaturedImage_get_controller_1.getCityFeaturedImageController);
+exports.cityFeaturedImageRouter.get('/get/list', cityFeaturedImage_getList_controller_1.getCityFeaturedImageListController);
+exports.cityFeaturedImageRouter.get('/get/total/count', cityFeaturedImage_getCount_controller_1.getCityFeaturedImageCountController);
+exports.cityFeaturedImageRouter.patch('/update', cityFeaturedImage_update_controller_1.updateCityFeaturedImageTitleController);
+//# sourceMappingURL=cityFeaturedImage.routes.js.map

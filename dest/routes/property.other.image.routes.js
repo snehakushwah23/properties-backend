@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.propertyOtherImageRouter = void 0;
+const express_1 = require("express");
+const token_middleware_1 = require("../middlewares/token.middleware");
+const property_other_image_create_controller_1 = require("../controllers/property.other.image/property.other.image.create.controller");
+const property_other_image_delete_controller_1 = require("../controllers/property.other.image/property.other.image.delete.controller");
+const property_other_image_get_controller_1 = require("../controllers/property.other.image/property.other.image.get.controller");
+const property_other_image_update_controller_1 = require("../controllers/property.other.image/property.other.image.update.controller");
+const propertyOtherImageListController_1 = require("../controllers/property.other.image/propertyOtherImageListController");
+const property_other_image_update_order_controller_1 = require("../controllers/property.other.image/property.other.image.update.order.controller");
+const multer_middleware_1 = require("../middlewares/multer.middleware");
+exports.propertyOtherImageRouter = (0, express_1.Router)({ caseSensitive: true, strict: true });
+exports.propertyOtherImageRouter.post('/create', token_middleware_1.getAccessTokenInfo, multer_middleware_1.Multer.single('image'), property_other_image_create_controller_1.propertyOtherImageCreateController);
+exports.propertyOtherImageRouter.delete('/delete', token_middleware_1.getAccessTokenInfo, property_other_image_delete_controller_1.propertyOtherImageDeleteController);
+exports.propertyOtherImageRouter.get('/get', property_other_image_get_controller_1.propertyOtherImageGetController);
+exports.propertyOtherImageRouter.get('/get/list', propertyOtherImageListController_1.propertyOtherImageListController);
+exports.propertyOtherImageRouter.patch('/update', token_middleware_1.getAccessTokenInfo, property_other_image_update_controller_1.propertyOtherImageUpdateController);
+exports.propertyOtherImageRouter.patch('/update/order', token_middleware_1.getAccessTokenInfo, property_other_image_update_order_controller_1.propertyOtherImageOrderUpdateController);
+//# sourceMappingURL=property.other.image.routes.js.map

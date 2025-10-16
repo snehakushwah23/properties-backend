@@ -1,0 +1,28 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.newsRouter = void 0;
+const express_1 = require("express");
+const token_middleware_1 = require("../middlewares/token.middleware");
+const news_create_controller_1 = require("../controllers/news/news.create.controller");
+const news_delete_controller_1 = require("../controllers/news/news.delete.controller");
+const news_get_controller_1 = require("../controllers/news/news.get.controller");
+const news_update_controller_1 = require("../controllers/news/news.update.controller");
+const multer_middleware_1 = require("../middlewares/multer.middleware");
+const news_get_list_controller_1 = require("../controllers/news/news.get.list.controller");
+const news_get_totalCount_controller_1 = require("../controllers/news/news.get.totalCount.controller");
+const news_get_todaysNewsCount_controller_1 = require("../controllers/news/news.get.todaysNewsCount.controller");
+const news_search_title_controller_1 = require("../controllers/news/news.search.title.controller");
+const news_get_search_controller_1 = require("../controllers/news/news.get.search.controller");
+const news_update_thumbnail_controller_1 = require("../controllers/news/news.update.thumbnail.controller");
+exports.newsRouter = (0, express_1.Router)({ caseSensitive: true, strict: true });
+exports.newsRouter.post('/create', token_middleware_1.getAccessTokenInfo, multer_middleware_1.Multer.single('thumbnail'), news_create_controller_1.newsCreateController);
+exports.newsRouter.delete('/delete', token_middleware_1.getAccessTokenInfo, news_delete_controller_1.newsDeleteController);
+exports.newsRouter.get('/get', news_get_controller_1.newsGetController);
+exports.newsRouter.patch('/update', token_middleware_1.getAccessTokenInfo, news_update_controller_1.newsUpdateController);
+exports.newsRouter.get("/get/list", news_get_list_controller_1.newsGetListController);
+exports.newsRouter.get("/get/totalCount", news_get_totalCount_controller_1.newsGetTotalCountController);
+exports.newsRouter.get("/get/todaysNewsCount", news_get_todaysNewsCount_controller_1.newsGetTodaysCountController);
+exports.newsRouter.get("/search/title", token_middleware_1.getAccessTokenInfo, news_search_title_controller_1.newsSearchTitleController);
+exports.newsRouter.get("/get/search", news_get_search_controller_1.newsGetSearchController);
+exports.newsRouter.patch("/update/thumbnail", token_middleware_1.getAccessTokenInfo, multer_middleware_1.Multer.single("thumbnail"), news_update_thumbnail_controller_1.newsUpdateThumbnailController);
+//# sourceMappingURL=news.routes.js.map

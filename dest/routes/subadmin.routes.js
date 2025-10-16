@@ -1,0 +1,25 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.subAdminRouter = void 0;
+const express_1 = require("express");
+const token_middleware_1 = require("../middlewares/token.middleware");
+const subAdmin_create_controller_1 = require("../controllers/subAdmin/subAdmin.create.controller");
+const subAdmin_login_phoneAndPassword_controller_1 = require("../controllers/subAdmin/subAdmin.login.phoneAndPassword.controller");
+const subAdmin_logout_controller_1 = require("../controllers/subAdmin/subAdmin.logout.controller");
+const subAdmin_get_list_controller_1 = require("../controllers/subAdmin/subAdmin.get.list.controller");
+const subAdmin_get_info_controller_1 = require("../controllers/subAdmin/subAdmin.get.info.controller");
+const subAdmin_search_name_controller_1 = require("../controllers/subAdmin/subAdmin.search.name.controller");
+const subAdmin_update_profilePicture_controller_1 = require("../controllers/subAdmin/subAdmin.update.profilePicture.controller");
+const subAdmin_update_controller_1 = require("../controllers/subAdmin/subAdmin.update.controller");
+const subAdmin_delete_controller_1 = require("../controllers/subAdmin/subAdmin.delete.controller");
+exports.subAdminRouter = (0, express_1.Router)({ caseSensitive: true, strict: true });
+exports.subAdminRouter.post("/create", token_middleware_1.getAccessTokenInfo, subAdmin_create_controller_1.subAdminCreateController);
+exports.subAdminRouter.post("/login/phoneAndPassword", subAdmin_login_phoneAndPassword_controller_1.subAdminLoginPhoneAndPasswordController);
+exports.subAdminRouter.delete("/logout", subAdmin_logout_controller_1.subAdminLogoutController);
+exports.subAdminRouter.get("/get/list", token_middleware_1.getAccessTokenInfo, subAdmin_get_list_controller_1.subAdminGetListController);
+exports.subAdminRouter.get("/get/info", token_middleware_1.getAccessTokenInfo, subAdmin_get_info_controller_1.subAdminGetInfoController);
+exports.subAdminRouter.get("/search/name", token_middleware_1.getAccessTokenInfo, subAdmin_search_name_controller_1.subAdminSearchByNameController);
+exports.subAdminRouter.put("/update/profilePicture", token_middleware_1.getAccessTokenInfo, subAdmin_update_profilePicture_controller_1.subAdminUpdateProfilePictureController);
+exports.subAdminRouter.put("/update", token_middleware_1.getAccessTokenInfo, subAdmin_update_controller_1.subAdminUpdateController);
+exports.subAdminRouter.delete("/delete", token_middleware_1.getAccessTokenInfo, subAdmin_delete_controller_1.subAdminDeleteController);
+//# sourceMappingURL=subadmin.routes.js.map

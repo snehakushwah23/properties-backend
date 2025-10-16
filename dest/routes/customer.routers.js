@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.customerRouter = void 0;
+const express_1 = require("express");
+const token_middleware_1 = require("../middlewares/token.middleware");
+const multer_middleware_1 = require("../middlewares/multer.middleware");
+const customer_create_controller_1 = require("../controllers/customer/customer.create.controller");
+const customer_login_phone_and_password_controller_1 = require("../controllers/customer/customer.login.phone.and.password.controller");
+const customer_logout_controller_1 = require("../controllers/customer/customer.logout.controller");
+const customer_update_controller_1 = require("../controllers/customer/customer.update.controller");
+const customer_update_profile_picture_controller_1 = require("../controllers/customer/customer.update.profile.picture.controller");
+const customer_get_controller_1 = require("../controllers/customer/customer.get.controller");
+exports.customerRouter = (0, express_1.Router)({ caseSensitive: true, strict: true });
+exports.customerRouter.post('/create', customer_create_controller_1.customerCreateController);
+exports.customerRouter.get('/get', token_middleware_1.getAccessTokenInfo, customer_get_controller_1.customerGetController);
+exports.customerRouter.post('/login/phoneAndPassword', customer_login_phone_and_password_controller_1.customerLoginPhoneAndPasswordController);
+exports.customerRouter.delete('/logout', token_middleware_1.getAccessTokenInfo, customer_logout_controller_1.customerLogoutController);
+exports.customerRouter.patch('/update', token_middleware_1.getAccessTokenInfo, customer_update_controller_1.customerUpdateController);
+exports.customerRouter.patch('/update/profilePicture', token_middleware_1.getAccessTokenInfo, multer_middleware_1.Multer.single('profilePicture'), customer_update_profile_picture_controller_1.customerUpdateProfilePictureController);
+//# sourceMappingURL=customer.routers.js.map

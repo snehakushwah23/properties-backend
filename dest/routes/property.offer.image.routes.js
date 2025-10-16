@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.propertyOfferImageRouter = void 0;
+const express_1 = require("express");
+const token_middleware_1 = require("../middlewares/token.middleware");
+const multer_middleware_1 = require("../middlewares/multer.middleware");
+const property_offer_image_create_controller_1 = require("../controllers/property.offer.image/property.offer.image.create.controller");
+const property_offer_image_delete_controller_1 = require("../controllers/property.offer.image/property.offer.image.delete.controller");
+const property_offer_image_get_controller_1 = require("../controllers/property.offer.image/property.offer.image.get.controller");
+const property_offer_image_get_list_controller_1 = require("../controllers/property.offer.image/property.offer.image.get.list.controller");
+const property_offer_image_update_controller_1 = require("../controllers/property.offer.image/property.offer.image.update.controller");
+const property_offer_image_update_order_controller_1 = require("../controllers/property.offer.image/property.offer.image.update.order.controller");
+exports.propertyOfferImageRouter = (0, express_1.Router)({ caseSensitive: true, strict: true });
+exports.propertyOfferImageRouter.post('/create', token_middleware_1.getAccessTokenInfo, multer_middleware_1.Multer.single('image'), property_offer_image_create_controller_1.propertyOfferImageCreateController);
+exports.propertyOfferImageRouter.delete('/delete', token_middleware_1.getAccessTokenInfo, property_offer_image_delete_controller_1.propertyOfferImageDeleteController);
+exports.propertyOfferImageRouter.get('/get', property_offer_image_get_controller_1.propertyOfferImageGetController);
+exports.propertyOfferImageRouter.get('/get/list', property_offer_image_get_list_controller_1.propertyOfferImageListController);
+exports.propertyOfferImageRouter.patch('/update', token_middleware_1.getAccessTokenInfo, property_offer_image_update_controller_1.propertyOfferImageUpdateController);
+exports.propertyOfferImageRouter.patch('/update/order', token_middleware_1.getAccessTokenInfo, property_offer_image_update_order_controller_1.propertyOfferImageOrderUpdateController);
+//# sourceMappingURL=property.offer.image.routes.js.map

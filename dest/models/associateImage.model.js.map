@@ -1,0 +1,1 @@
+{"version":3,"file":"associateImage.model.js","sourceRoot":"","sources":["../../models/associateImage.model.ts"],"names":[],"mappings":";;;;;;AAAA,wDAAgC;AAEnB,QAAA,oBAAoB,GAAG,IAAI,kBAAQ,CAAC,MAAM,CACnD;IACI,KAAK,EAAE;QACL,IAAI,EAAE,MAAM;QACZ,QAAQ,EAAE,IAAI;KACf;CACJ,EACD,EAAE,UAAU,EAAE,IAAI,EAAE,CACvB,CAAC"}

@@ -1,0 +1,78 @@
+import express from 'express'
+import cookieParser from 'cookie-parser'
+import dotenv from 'dotenv'
+import cors from 'cors'
+import path from 'node:path'
+
+dotenv.config()
+
+const app = express()
+const PORT = process.env.PORT
+
+app.use(cors({ origin: '*', credentials: true }))
+app.use(cookieParser())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+app.use(express.static(path.join(__dirname, '/build')))
+
+import { adminRouter } from './routes/admin.routes'
+import { builderRouter } from './routes/builder.routes'
+import { bankRouter } from './routes/bank.routes'
+import { propertyLinkRouter } from './routes/property.link.routes'
+import { propertyOtherImageRouter } from './routes/property.other.image.routes'
+import { propertyBuyOptionRouter } from './routes/property.buy.option.routes'
+import { customerTypeRouter } from './routes/customer.type.routes'
+import { propertyVideoRouter } from './routes/property.video.routes'
+import { propertyRouter } from './routes/property.routes'
+import { propertyPhotoRouter } from './routes/property.photo.routes'
+import { propertyPDFRouter } from './routes/property.pdf.routes'
+import { propertyOfferRouter } from './routes/property.offer.routes'
+import { likedPropertyRouter } from './routes/liked.property.routers'
+import { newsRouter } from './routes/news.routes'
+import { bankPropertyRouter } from './routes/bank.property.offer.routes'
+import { subAdminRouter } from './routes/subadmin.routes'
+import { dashboardRouter } from './routes/dashboard.routes'
+import { appHomePageFeaturedImageRouter } from './routes/appHomePageFeaturedImage.routes'
+import { websiteHomePageFeaturedImageRouter } from './routes/websiteHomePageFeaturedImage.routes'
+import { homepageRouter } from './routes/homepage.routes'
+import { propertyLocationRouter } from './routes/propertyLocation.routes'
+import { cityFeaturedImageRouter } from './routes/cityFeaturedImage.routes'
+import { associateImageRouter } from './routes/associateImage.routes'
+import { customerAdminRouter } from './routes/customer.admin.routes'
+import { propertyOfferCustomerTypeRouter } from './routes/propertyOfferCustomerType.routes'
+import { propertyOfferImageRouter } from './routes/property.offer.image.routes'
+import { specialLinkRouter } from './routes/special.link.routes'
+import { propertyOfferDescriptionRouter } from './routes/property.offer.description.routes'
+
+app.use('/api/admin', adminRouter)
+app.use('/api/builder', builderRouter)
+app.use('/api/bank', bankRouter)
+app.use('/api/bankProperty', bankPropertyRouter)
+app.use('/api/customer', customerAdminRouter)
+app.use('/api/customerType', customerTypeRouter)
+app.use('/api/dashboard', dashboardRouter)
+app.use('/api/likedProperty', likedPropertyRouter)
+app.use('/api/news', newsRouter)
+app.use('/api/property', propertyRouter)
+app.use('/api/propertyBuyOption', propertyBuyOptionRouter)
+app.use('/api/propertyLink', propertyLinkRouter)
+app.use('/api/propertyOffer', propertyOfferRouter)
+app.use('/api/propertyOfferCustomerType', propertyOfferCustomerTypeRouter)
+app.use('/api/propertyOtherImage', propertyOtherImageRouter)
+app.use('/api/propertyPDF', propertyPDFRouter)
+app.use('/api/propertyPhoto', propertyPhotoRouter)
+app.use('/api/propertyVideo', propertyVideoRouter)
+app.use('/api/subAdmin', subAdminRouter)
+app.use('/api/appHomePageFeaturedImage', appHomePageFeaturedImageRouter)
+app.use("/api/websiteHomePageFeaturedImage", websiteHomePageFeaturedImageRouter)
+app.use("/api/homepage", homepageRouter)
+app.use("/api/propertyLocation", propertyLocationRouter)
+app.use("/api/cityFeaturedImage", cityFeaturedImageRouter)
+app.use("/api/associationImage", associateImageRouter)
+app.use("/api/propertyOfferImage", propertyOfferImageRouter)
+app.use("/api/specialLink", specialLinkRouter)
+app.use("/api/propertyOfferDescription", propertyOfferDescriptionRouter)
+
+app.listen(PORT, () => {
+    console.log("Server listening at " + PORT)
+})

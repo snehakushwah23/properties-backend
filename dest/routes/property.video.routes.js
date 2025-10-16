@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.propertyVideoRouter = void 0;
+const express_1 = require("express");
+const token_middleware_1 = require("../middlewares/token.middleware");
+const property_video_create_controller_1 = require("../controllers/property.video/property.video.create.controller");
+const property_video_delete_controller_1 = require("../controllers/property.video/property.video.delete.controller");
+const property_video_get_controller_1 = require("../controllers/property.video/property.video.get.controller");
+const property_video_update_controller_1 = require("../controllers/property.video/property.video.update.controller");
+const property_video_get_list_controller_1 = require("../controllers/property.video/property.video.get.list.controller");
+const property_video_update_order_controller_1 = require("../controllers/property.video/property.video.update.order.controller");
+const multer_middleware_1 = require("../middlewares/multer.middleware");
+exports.propertyVideoRouter = (0, express_1.Router)({ caseSensitive: true, strict: true });
+exports.propertyVideoRouter.post('/create', token_middleware_1.getAccessTokenInfo, multer_middleware_1.Multer.single('video'), property_video_create_controller_1.propertyVideoCreateController);
+exports.propertyVideoRouter.delete('/delete', token_middleware_1.getAccessTokenInfo, property_video_delete_controller_1.propertyVideoDeleteController);
+exports.propertyVideoRouter.get('/get', property_video_get_controller_1.propertyVideoGetController);
+exports.propertyVideoRouter.get('/get/list', property_video_get_list_controller_1.propertyVideoListController);
+exports.propertyVideoRouter.patch('/update', token_middleware_1.getAccessTokenInfo, property_video_update_controller_1.propertyVideoUpdateController);
+exports.propertyVideoRouter.patch('/update/order', token_middleware_1.getAccessTokenInfo, property_video_update_order_controller_1.propertyVideoOrderUpdateController);
+//# sourceMappingURL=property.video.routes.js.map

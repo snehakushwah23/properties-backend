@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.propertyPhotoRouter = void 0;
+const express_1 = require("express");
+const token_middleware_1 = require("../middlewares/token.middleware");
+const property_photo_create_controller_1 = require("../controllers/property.photo/property.photo.create.controller");
+const property_photo_delete_controller_1 = require("../controllers/property.photo/property.photo.delete.controller");
+const property_photo_get_controller_1 = require("../controllers/property.photo/property.photo.get.controller");
+const property_photo_update_controller_1 = require("../controllers/property.photo/property.photo.update.controller");
+const property_photo_get_list_controller_1 = require("../controllers/property.photo/property.photo.get.list.controller");
+const property_photo_update_order_controller_1 = require("../controllers/property.photo/property.photo.update.order.controller");
+const multer_middleware_1 = require("../middlewares/multer.middleware");
+exports.propertyPhotoRouter = (0, express_1.Router)({ caseSensitive: true, strict: true });
+exports.propertyPhotoRouter.post('/create', token_middleware_1.getAccessTokenInfo, multer_middleware_1.Multer.single('photo'), property_photo_create_controller_1.propertyPhotoCreateController);
+exports.propertyPhotoRouter.delete('/delete', token_middleware_1.getAccessTokenInfo, property_photo_delete_controller_1.propertyPhotoDeleteController);
+exports.propertyPhotoRouter.get('/get', property_photo_get_controller_1.propertyPhotoGetController);
+exports.propertyPhotoRouter.get('/get/list', property_photo_get_list_controller_1.propertyPhotoListController);
+exports.propertyPhotoRouter.patch('/update', token_middleware_1.getAccessTokenInfo, property_photo_update_controller_1.propertyPhotoUpdateController);
+exports.propertyPhotoRouter.patch('/update/order', token_middleware_1.getAccessTokenInfo, property_photo_update_order_controller_1.propertyPhotoOrderUpdateController);
+//# sourceMappingURL=property.photo.routes.js.map
