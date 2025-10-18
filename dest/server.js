@@ -79,39 +79,190 @@ app.get('/', (_req, res) => {
         version: '1.0.0',
         totalEndpoints: 25,
         endpoints: {
-            admin: '/api/admin',
-            appHomePageFeaturedImage: '/api/appHomePageFeaturedImage',
-            associationImage: '/api/associationImage',
-            bank: '/api/bank',
-            bankProperty: '/api/bankProperty',
-            builder: '/api/builder',
-            cityFeaturedImage: '/api/cityFeaturedImage',
-            customer: '/api/customer',
-            customerType: '/api/customerType',
-            dashboard: '/api/dashboard',
-            homepage: '/api/homepage',
-            likedProperty: '/api/likedProperty',
-            news: '/api/news',
-            property: '/api/property',
-            propertyBuyOption: '/api/propertyBuyOption',
-            propertyLink: '/api/propertyLink',
-            propertyLocation: '/api/propertyLocation',
-            propertyOffer: '/api/propertyOffer',
-            propertyOfferCustomerType: '/api/propertyOfferCustomerType',
-            propertyOfferDescription: '/api/propertyOfferDescription',
-            propertyOfferImage: '/api/propertyOfferImage',
-            propertyOtherImage: '/api/propertyOtherImage',
-            propertyPDF: '/api/propertyPDF',
-            propertyPhoto: '/api/propertyPhoto',
-            propertyVideo: '/api/propertyVideo',
-            specialLink: '/api/specialLink',
-            subAdmin: '/api/subAdmin',
-            websiteHomePageFeaturedImage: '/api/websiteHomePageFeaturedImage'
+            admin: {
+                baseUrl: '/api/admin',
+                description: 'Admin management operations',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            appHomePageFeaturedImage: {
+                baseUrl: '/api/appHomePageFeaturedImage',
+                description: 'App homepage featured images management',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            associationImage: {
+                baseUrl: '/api/associationImage',
+                description: 'Association images management',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            bank: {
+                baseUrl: '/api/bank',
+                description: 'Bank management operations',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            bankProperty: {
+                baseUrl: '/api/bankProperty',
+                description: 'Bank property offers management',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            builder: {
+                baseUrl: '/api/builder',
+                description: 'Builder management operations',
+                subRoutes: {
+                    get: '/api/builder/get',
+                    list: '/api/builder/get/list',
+                    count: '/api/builder/get/count',
+                    properties: '/api/builder/get/properties',
+                    search: '/api/builder/search/name'
+                },
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            cityFeaturedImage: {
+                baseUrl: '/api/cityFeaturedImage',
+                description: 'City featured images management',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            customer: {
+                baseUrl: '/api/customer',
+                description: 'Customer management operations',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            customerType: {
+                baseUrl: '/api/customerType',
+                description: 'Customer type management',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            dashboard: {
+                baseUrl: '/api/dashboard',
+                description: 'Dashboard data and analytics',
+                methods: ['GET']
+            },
+            homepage: {
+                baseUrl: '/api/homepage',
+                description: 'Homepage content management',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            likedProperty: {
+                baseUrl: '/api/likedProperty',
+                description: 'User liked properties management',
+                methods: ['GET', 'POST', 'DELETE']
+            },
+            news: {
+                baseUrl: '/api/news',
+                description: 'News and articles management',
+                subRoutes: {
+                    get: '/api/news/get',
+                    list: '/api/news/get/list',
+                    count: '/api/news/get/totalCount'
+                },
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            property: {
+                baseUrl: '/api/property',
+                description: 'Property management operations',
+                subRoutes: {
+                    get: '/api/property/get',
+                    list: '/api/property/get/list',
+                    count: '/api/property/get/count',
+                    search: {
+                        byAddress: '/api/property/search/address',
+                        byCity: '/api/property/search/city',
+                        byReraID: '/api/property/search/reraID',
+                        byName: '/api/property/search/name',
+                        byRegion: '/api/property/search/region',
+                        byCityAndRegion: '/api/property/search/cityAndRegion'
+                    },
+                    filter: {
+                        basic: '/api/property/get/propertyByFilter',
+                        compressed: '/api/property/get/propertyByFilterCompressed',
+                        multiple: '/api/property/get/propertyListByMultipleFilter'
+                    },
+                    location: '/api/property/get/propertyByLatitudeAndLongitude',
+                    types: '/api/property/get/propertyTypeList'
+                },
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            propertyBuyOption: {
+                baseUrl: '/api/propertyBuyOption',
+                description: 'Property buy options management',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            propertyLink: {
+                baseUrl: '/api/propertyLink',
+                description: 'Property links management',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            propertyLocation: {
+                baseUrl: '/api/propertyLocation',
+                description: 'Property location management',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            propertyOffer: {
+                baseUrl: '/api/propertyOffer',
+                description: 'Property offers management',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            propertyOfferCustomerType: {
+                baseUrl: '/api/propertyOfferCustomerType',
+                description: 'Property offer customer types',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            propertyOfferDescription: {
+                baseUrl: '/api/propertyOfferDescription',
+                description: 'Property offer descriptions',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            propertyOfferImage: {
+                baseUrl: '/api/propertyOfferImage',
+                description: 'Property offer images',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            propertyOtherImage: {
+                baseUrl: '/api/propertyOtherImage',
+                description: 'Property other images',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            propertyPDF: {
+                baseUrl: '/api/propertyPDF',
+                description: 'Property PDF documents',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            propertyPhoto: {
+                baseUrl: '/api/propertyPhoto',
+                description: 'Property photos',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            propertyVideo: {
+                baseUrl: '/api/propertyVideo',
+                description: 'Property videos',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            specialLink: {
+                baseUrl: '/api/specialLink',
+                description: 'Special links management',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            subAdmin: {
+                baseUrl: '/api/subAdmin',
+                description: 'Sub-admin management',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            },
+            websiteHomePageFeaturedImage: {
+                baseUrl: '/api/websiteHomePageFeaturedImage',
+                description: 'Website homepage featured images',
+                methods: ['GET', 'POST', 'PATCH', 'DELETE']
+            }
         },
         documentation: {
             note: 'All endpoints support standard HTTP methods (GET, POST, PUT, PATCH, DELETE)',
             authentication: 'Some endpoints may require authentication tokens',
-            cors: 'CORS is enabled for all origins'
+            cors: 'CORS is enabled for all origins',
+            examples: {
+                getProperty: 'GET /api/property/get?id=PROPERTY_ID',
+                getPropertyList: 'GET /api/property/get/list?page=1&limit=10',
+                searchByCity: 'GET /api/property/search/city?city=Mumbai',
+                getBuilderList: 'GET /api/builder/get/list?page=1&limit=10',
+                getNewsList: 'GET /api/news/get/list?page=1&limit=10'
+            }
         }
     });
 });
