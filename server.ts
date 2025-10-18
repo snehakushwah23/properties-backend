@@ -15,23 +15,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, '/build')))
 
-// Health check route
-app.get('/', (req, res) => {
-    res.json({
-        status: 'success',
-        message: 'Properties Backend API is running',
-        version: '1.0.0',
-        endpoints: {
-            admin: '/api/admin',
-            properties: '/api/property',
-            builders: '/api/builder',
-            banks: '/api/bank',
-            news: '/api/news',
-            // Add more endpoints as needed
-        }
-    })
-})
-
 import { adminRouter } from './routes/admin.routes'
 import { builderRouter } from './routes/builder.routes'
 import { bankRouter } from './routes/bank.routes'
@@ -89,6 +72,23 @@ app.use("/api/associationImage", associateImageRouter)
 app.use("/api/propertyOfferImage", propertyOfferImageRouter)
 app.use("/api/specialLink", specialLinkRouter)
 app.use("/api/propertyOfferDescription", propertyOfferDescriptionRouter)
+
+// Health check route - moved to end to ensure it's properly compiled
+app.get('/', (_req, res) => {
+    res.json({
+        status: 'success',
+        message: 'Properties Backend API is running',
+        version: '1.0.0',
+        endpoints: {
+            admin: '/api/admin',
+            properties: '/api/property',
+            builders: '/api/builder',
+            banks: '/api/bank',
+            news: '/api/news',
+            // Add more endpoints as needed
+        }
+    })
+})
 
 app.listen(PORT, () => {
     console.log("Server listening at " + PORT)

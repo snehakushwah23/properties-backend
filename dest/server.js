@@ -72,6 +72,20 @@ app.use("/api/associationImage", associateImage_routes_1.associateImageRouter);
 app.use("/api/propertyOfferImage", property_offer_image_routes_1.propertyOfferImageRouter);
 app.use("/api/specialLink", special_link_routes_1.specialLinkRouter);
 app.use("/api/propertyOfferDescription", property_offer_description_routes_1.propertyOfferDescriptionRouter);
+app.get('/', (_req, res) => {
+    res.json({
+        status: 'success',
+        message: 'Properties Backend API is running',
+        version: '1.0.0',
+        endpoints: {
+            admin: '/api/admin',
+            properties: '/api/property',
+            builders: '/api/builder',
+            banks: '/api/bank',
+            news: '/api/news',
+        }
+    });
+});
 app.listen(PORT, () => {
     console.log("Server listening at " + PORT);
 });
